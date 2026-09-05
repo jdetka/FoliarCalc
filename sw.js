@@ -1,7 +1,7 @@
-const CACHE_NAME = 'foliarcalc-v8';
+const CACHE_NAME = 'foliarcalc-v7';
 const APP_FILES = [
   './',
-  './index.html',
+  './pine-needle-area-calculator.html',
   './manifest.webmanifest'
 ];
 
