@@ -1,0 +1,10 @@
+{
+  "name": "FoliarCalc",
+  "short_name": "FoliarCalc",
+  "description": "Estimate projected foliage area and visible foliage condition from calibrated photos.",
+  "start_url": "./pine-needle-area-calculator.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f5f7f2",
+  "theme_color": "#193227"
+}
