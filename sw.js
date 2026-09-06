@@ -1,7 +1,7 @@
-const CACHE_NAME = 'foliarcalc-v7';
+const CACHE_NAME = 'foliarcalc-v10';
 const APP_FILES = [
   './',
-  './pine-needle-area-calculator.html',
+  './index.html',
   './manifest.webmanifest'
 ];
 
@@ -21,6 +21,18 @@ self.addEventListener('activate', event => {
 
 self.addEventListener('fetch', event => {
   if (event.request.method !== 'GET') return;
+  if (event.request.mode === 'navigate') {
+    event.respondWith(
+      fetch(event.request)
+        .then(response => {
+          const copy = response.clone();
+          caches.open(CACHE_NAME).then(cache => cache.put(event.request, copy));
+          return response;
+        })
+        .catch(() => caches.match(event.request).then(cached => cached || caches.match('./')))
+    );
+    return;
+  }
   event.respondWith(
     caches.match(event.request).then(cached => cached || fetch(event.request))
   );
